@@ -1,0 +1,15 @@
+#menu {
+  position: relative;
+  top: -1em;
+  left: -10em;
+}
+
+.menu {
+  &-item {
+    position: absolute;
+
+    p {
+      text-transform: uppercase;
+    }
+  }
+}

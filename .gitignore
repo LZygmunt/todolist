@@ -2,6 +2,7 @@
 
 # idea
 .idea
+todolist.iml
 
 # dependencies
 /node_modules

@@ -1,0 +1,81 @@
+.todo {
+  &-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    padding: 10px 20px;
+    width: 70%;
+    border-bottom: 1px solid #cecece;
+    font-family: Roboto, sansSerif, serif;
+    font-weight: 100;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+
+    &:hover { background-color: whitesmoke; }
+
+    &:active { background-color: #eeeeee; }
+
+    i {
+      font-family: inherit;
+      font-size: 24px;
+      font-weight: 900;
+      width: 1em;
+      height: 1em;
+      cursor: pointer;
+      color: white;
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      margin-right: 10px;
+      margin-bottom: 5px;
+
+      &.add {
+        background-color: #4fbf4f;
+      }
+
+      &.remove {
+        position: absolute;
+        right: 0;
+        background-color: #bf4f4f;
+      }
+    }
+
+    input[type=checkbox] {
+      margin-right: 10px;
+      font-size: 30px;
+
+      &:focus { outline: 0; }
+    }
+
+    p { width: 90%; }
+
+    .checked {
+      text-decoration: line-through;
+      color: #999999;
+      font-style: italic;
+    }
+  }
+
+  &-item#add {
+    margin: 0 auto;
+    padding-bottom: 5px;
+    border-bottom-color: #333;
+
+    input[type=text] {
+      background: none;
+      border: 0;
+      width: 100%;
+      color: inherit;
+      font-weight: bold;
+      font-family: inherit;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+}

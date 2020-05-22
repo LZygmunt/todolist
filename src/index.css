@@ -6,9 +6,36 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: whitesmoke;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+#root {
+  margin: 10% auto auto;
+  padding: 50px 30px;
+  width: 25%;
+  box-shadow:
+          0 1px 1px rgba(0, 0, 0, 0.15),
+          0 10px 0 -5px #eee,
+          0 10px 1px -4px rgba(0, 0, 0, 0.15),
+          0 20px 0 -10px #eee,
+          0 20px 1px -9px rgba(0, 0, 0, 0.15);
+}
+
+.box {
+  border: 1px solid #efefef;
+  background-color: white;
+}
+
+.non-selected {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Chrome, Edge, Opera and Firefox */
 }
