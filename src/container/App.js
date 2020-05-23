@@ -5,11 +5,11 @@ import Menu from "../component/menu/Menu";
 import './app.scss';
 
 const App = () => {
-    const [ isLoading, setIsLoading ] = React.useState( true );
+    // const [ isLoading, setIsLoading ] = React.useState( true );
 
-    React.useEffect( () => {
-        setTimeout( () => setIsLoading( false ), 1500 );
-    }, [ isLoading ]);
+    // React.useEffect( () => {
+    //     setTimeout( () => setIsLoading( false ), 1500 );
+    // }, [ isLoading ]);
 
     return (
       <>
@@ -17,7 +17,7 @@ const App = () => {
           {/*  ? <h2>Page is loading...</h2>*/}
           {/*  : <ToDoList />*/}
           {/*}*/}
-          <Menu />
+        <Menu />
         <ToDoList />
       </>
     );
