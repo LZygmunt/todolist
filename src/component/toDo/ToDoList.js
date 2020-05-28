@@ -1,16 +1,13 @@
 import React from 'react';
 import ToDosData from "../ToDosData";
-import ToDoItem from "./ToDoItem";
+import List from "./List";
 
 import "./scss/toDo.scss";
 
 const ToDoList = () => {
   const [ toDos, setToDos ] = React.useState([]);
   const [ text, setText ] = React.useState( "" );
-
-  const sort = () => {
-    console.log("sortuje");
-  };
+  const [ fetched, setFetch ] = React.useState( false );
 
   const toggleComplete = id => {
     setToDos( prevState =>
@@ -38,16 +35,11 @@ const ToDoList = () => {
   const deleteToDo = id => { setToDos( prevToDos => prevToDos.filter( toDo => toDo.id !== id )); }
 
   React.useEffect( () => {
-    if ( toDos.length === 0 ) setToDos( ToDosData );
-  }, [ toDos  ]);
-
-  const toDosMap = toDos.map( item => <ToDoItem
-    key={ item.id }
-    item={ item }
-    toggleComplete={ toggleComplete }
-    deleteToDo={ deleteToDo }
-    sort={ sort }
-  />);
+    if ( !fetched ) {
+      setToDos( ToDosData );
+      setFetch( true );
+    }
+  }, [ toDos, fetched ]);
 
   return (
     <>
@@ -62,7 +54,11 @@ const ToDoList = () => {
           onChange={ evt => setText( evt.target.value )}
         />
       </div>
-      <div className="list">{ toDosMap }</div>
+      <List
+        list={ toDos }
+        clickFn={ toggleComplete }
+        deleteItem={ deleteToDo }
+      />
     </>
   );
 };

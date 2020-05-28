@@ -1,63 +1,99 @@
 #menu {
   position: absolute;
-  left: -7.5em;
+  left: -1em;
   font-size: 20px;
+  width: calc( 100% + 2em);
   display: grid;
-  grid-column-gap: calc( 100% + 2.8em );
 }
 
 .menu {
   &-item {
-    padding: 0 .75em;
+    position: relative;
+    padding: 0;
     margin-bottom: .5em;
-    width: 7.5em;
+    width: max-content;
     cursor: pointer;
     display: flex;
+    overflow: hidden;
+    transition-duration: .3s;
+    transition-timing-function: ease-in-out;
+    transition-property: all;
 
-    &:hover { background-color: whitesmoke; }
-
-    &:active { background-color: #eeeeee; }
-
-    p {
+    .text {
+      width: 0;
       margin: 0;
       text-transform: uppercase;
       padding: 1.25em 0;
       height: 1em;
+      flex-shrink: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      transition-duration: .3s;
+      transition-timing-function: ease-in-out;
+      transition-property: all;
     }
 
-    .arrow {
+    &:hover {
+      background-color: whitesmoke;
+
+      .text {
+        padding-left: .75em;
+        padding-right: .75em;
+      }
+    }
+
+    &:active { background-color: #eeeeee; }
+
+    .icon {
       padding: .75em 0;
       width: 1em;
       height: 2em;
       flex-shrink: 0;
 
-      polygon {
+      polygon, circle, rect {
         fill: #cecece;
       }
     }
 
     &.left {
+      left: 0;
       grid-column: 1/1;
       box-shadow: 0.15em 0 whitesmoke;
-      justify-content: flex-end;
+      text-align: right;
 
-      .arrow {
+      .icon {
         order: -1;
         border-right: .1em solid #cecece;
         padding-right: .3em;
+        padding-left: .75em;
         margin-right: auto;
+      }
+
+      &:hover {
+        left: -8.5em;
       }
     }
 
     &.right {
-      grid-column: 2;
+      right: 0;
+      grid-column: 2/2;
       box-shadow: -0.15em 0 whitesmoke;
+      justify-self: flex-end;
 
-      .arrow {
+      .icon {
         border-left: .1em solid #cecece;
         padding-left: .3em;
+        padding-right: .75em;
         margin-left: auto;
       }
+
+      &:hover {
+        right: -8.5em;
+      }
     }
+
+    &.top { grid-row: 1/1; }
+
+    &.bottom { grid-row: 2/2; }
   }
 }
