@@ -1,41 +1,22 @@
 import React from 'react';
-import List from "./List";
+
+import List from './List';
+
+const clickFn = () => {};
+
+const deleteItem = ( id ) => {
+  console.log( id );
+};
 
 const ListOfLists = () => {
-  const list = [ {
-    text: 'List#1',
-    id: 1
-  }, {
-    text: "List#2",
-    id: 2
-  }, {
-    text: "List#3",
-    id: 3
-  }, {
-    text: "List#4",
-    id: 4
-  }, {
-    text: "List#5",
-    id: 5
-  }, {
-    text: "List#6",
-    id: 6
-  } ];
-
-  const deleteItem = id => {
-
-  };
-
-  const clickFn = () => {};
+  const [ list, setList ] = React.useState([]);
 
   return (
-    <>
-      <List
-        list={ list }
-        clickFn={ clickFn }
-        deleteItem={ deleteItem }
-      />
-    </>
+    <List
+      list={ list }
+      clickFn={ clickFn }
+      deleteItem={ deleteItem }
+    />
   );
 };
 

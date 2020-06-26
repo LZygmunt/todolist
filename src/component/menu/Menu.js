@@ -1,66 +1,83 @@
-import React from 'react';
-import MenuItem from "./MenuItem";
-import { useLocation } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import DotsIcon from '../misc/Icons/DotsIcon';
+import LeftArrowIcon from '../misc/Icons/LeftArrowIcon';
+import PlusIcon from '../misc/Icons/PlusIcon';
+import RightArrowIcon from '../misc/Icons/RightArrowIcon';
+import MenuItem from './MenuItem';
+import {
+  Redirect,
+  useLocation,
+  useHistory,
+} from 'react-router-dom';
 
 import './scss/menu.scss';
 
-const click = () => {
-  console.log("WIIIII!!!! Logujem");
-}
-
 const Menu = () => {
   const location = useLocation();
+  const history = useHistory();
+  const nextList = 'l';
+  const prevList = 's';
+
+  const click = useCallback(( evt ) => {
+    const { name } = evt.currentTarget.dataset;
+
+    switch ( name ) {
+      case 'add':
+        history.push( '/list/l ' );
+        break;
+      case 'next':
+        history.push( `/list/${ nextList }` );
+        break;
+      case 'prev':
+        history.push( `/list/${ prevList }` );
+        break;
+      case 'lists':
+        history.push( '/' );
+        break;
+      default:
+        console.log( name );
+        break;
+    }
+  }, [ history ]);
 
   return (
     <div id="menu">
       <MenuItem
         text="Add list"
         clickFn={ click }
-        className={[ "right", "top" ]}>
-        <svg className="add-list icon" viewBox="-30 0 120 100">
-          <polygon points="30,0 60,0 60,30 90,30 90,60 60,60 60,90 30,90 30,60 0,60 0,30 30,30"/>
-        </svg>
+        classes={[ 'right', 'top' ]}
+        name="add"
+      >
+        <PlusIcon />
       </MenuItem>
-      { location.pathname !== '/' && <>
-        <MenuItem
-          text="Your Lists"
-          clickFn={ click }
-          className={[ "left", "top" ]}>
-          <svg className="dots icon" viewBox="0 0 100 100">
-            <circle
-              cx="20"
-              cy="0"
-              r="20"
-            />
-            <circle
-              cx="20"
-              cy="60"
-              r="20"
-            />
-            <circle
-              cx="20"
-              cy="120"
-              r="20"
-            />
-          </svg>
-        </MenuItem>
-        <MenuItem
-          text="Lista#1"
-          clickFn={ click }
-          className={[ "left", "bottom" ]}>
-          <svg className="arrow icon" viewBox="0 0 100 100">
-            <polygon points="0,50 50,0 50,25 25,50 50,75 50,100"/>
-          </svg>
-        </MenuItem>
-        <MenuItem
-          text="Lista#3"
-          clickFn={ click }
-          className={[ "right", "bottom" ]}>
-          <svg className="arrow icon" viewBox="0 0 100 100">
-            <polygon points="100,50 50,0 50,25 75,50 50,75 50,100"/>
-          </svg>
-        </MenuItem>
-      </> }
+      { location.pathname !== '/' && (
+        <>
+          <MenuItem
+            text="Your Lists"
+            clickFn={ click }
+            classes={[ 'left', 'top' ]}
+            name="lists"
+          >
+            <DotsIcon />
+          </MenuItem>
+          <MenuItem
+            text="Lista#1"
+            clickFn={ click }
+            classes={[ 'left', 'bottom' ]}
+            name="prev"
+          >
+            <LeftArrowIcon />
+          </MenuItem>
+          <MenuItem
+            text="Lista#3"
+            clickFn={ click }
+            classes={[ 'right', 'bottom' ]}
+            name="next"
+          >
+            <RightArrowIcon />
+          </MenuItem>
+        </>
+      ) }
     </div>
   );
 };
