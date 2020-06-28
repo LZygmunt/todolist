@@ -1,11 +1,31 @@
-import React from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { ToDoContext } from 'contexts/ToDoContext';
+
 import AddToDo from './AddToDo';
 import List from './List';
 
 import './scss/toDo.scss';
 
 const ToDoList = () => {
-  // const [ fetched, setFetch ] = React.useState( false );
+  const { id } = useParams();
+  const { state } = useLocation();
+  const { toDos } = useContext( ToDoContext );
+  const [ list, setList ] = useState([]);
+
+  console.log( state );
+
+  useEffect(() => {
+    if ( state?.isNew ) {
+      setList([]);
+    } else {
+      setList( toDos.find(( list ) => +list.id === +id ).toDoList );
+    }
+  }, [ id, toDos ]);
 
   const toggleComplete = ( id ) => {
     /*
@@ -33,14 +53,13 @@ const ToDoList = () => {
    */
 
   return (
-    <>
+    <List
+      list={ list }
+      clickFn={ toggleComplete }
+      deleteItem={ deleteToDo }
+    >
       <AddToDo toDos={[]} setToDos={() => {}} />
-      <List
-        list={ [] }
-        clickFn={ toggleComplete }
-        deleteItem={ deleteToDo }
-      />
-    </>
+    </List>
   );
 };
 

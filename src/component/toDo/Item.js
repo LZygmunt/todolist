@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Hamburger from '../misc/Icons/Hamburger';
+import HamburgerIcon from 'component/misc/Icons/HamburgerIcon';
+import RemoveIcon from 'component/misc/Icons/RemoveIcon';
 
 const Item = ({
   item,
@@ -28,7 +29,7 @@ const Item = ({
       role="button"
       tabIndex={ 0 }
     >
-      <Hamburger clickFn={ sort } />
+      <HamburgerIcon clickFn={ sort } />
       <p className={ completed ? 'checked' : undefined }>
         { text }
       </p>
@@ -39,7 +40,7 @@ const Item = ({
         role="button"
         tabIndex={ 0 }
       >
-        x
+        <RemoveIcon />
       </i>
     </div>
   );

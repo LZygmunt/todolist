@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import { ToDoContext } from 'contexts/ToDoContext';
+import { REMOVE_LIST } from 'utils/constans';
 
 import List from './List';
 
-const clickFn = () => {};
-
-const deleteItem = ( id ) => {
-  console.log( id );
-};
-
 const ListOfLists = () => {
-  const [ list, setList ] = React.useState([]);
+  const { toDos, dispatch } = useContext( ToDoContext );
+  const history = useHistory();
+
+  const clickFn = useCallback(( id ) => {
+    history.push( `/list/${ id }` );
+  }, [ history ]);
+
+  const deleteItem = useCallback(( id ) => {
+    dispatch({
+      type: REMOVE_LIST,
+      listID: id,
+    });
+  }, [ dispatch ]);
 
   return (
     <List
-      list={ list }
+      list={ toDos }
       clickFn={ clickFn }
       deleteItem={ deleteItem }
     />

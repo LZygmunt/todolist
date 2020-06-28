@@ -11,6 +11,7 @@
     font-size: 18px;
     color: #333;
     cursor: pointer;
+    z-index: 0;
 
     &:hover { background-color: whitesmoke; }
 
@@ -18,10 +19,11 @@
 
     i {
       font-family: inherit;
-      font-size: 24px;
+      font-size: 16px;
       font-weight: 900;
       width: 1em;
       height: 1em;
+      padding: 4px;
       cursor: pointer;
       color: white;
       display: flex;
@@ -60,9 +62,13 @@
   }
 
   &-item#add {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     margin: 0 auto;
     padding-bottom: 5px;
     border-bottom-color: #333;
+    background-color: white;
 
     input[type=text] {
       background: none;

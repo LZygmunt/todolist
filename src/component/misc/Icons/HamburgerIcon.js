@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './scss/hamburger.scss';
 
-const Hamburger = ({ clickFn }) => (
+const HamburgerIcon = ({ clickFn }) => (
   <svg
     viewBox="0 0 100 80"
     width="20"
@@ -25,6 +25,6 @@ const Hamburger = ({ clickFn }) => (
   </svg>
 );
 
-Hamburger.propTypes = { clickFn: PropTypes.func.isRequired };
+HamburgerIcon.propTypes = { clickFn: PropTypes.func.isRequired };
 
-export default Hamburger;
+export default HamburgerIcon;

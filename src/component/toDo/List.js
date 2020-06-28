@@ -7,6 +7,7 @@ const List = ({
   list,
   clickFn,
   deleteItem,
+  children,
 }) => {
   const sort = () => {
     console.log( 'sortuje' );
@@ -30,12 +31,14 @@ const List = ({
 
   return (
     <div className="list">
+      { children }
       { mappedList }
     </div>
   );
 };
 
 List.propTypes = {
+  children: PropTypes.node,
   clickFn: PropTypes.func,
   deleteItem: PropTypes.func,
   list: PropTypes.arrayOf( PropTypes.shape({
@@ -52,6 +55,7 @@ List.propTypes = {
 };
 
 List.defaultProps = {
+  children: null,
   clickFn: () => {},
   deleteItem: () => {},
   list: [],

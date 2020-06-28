@@ -1,19 +1,23 @@
 import React, { useCallback } from 'react';
-import DotsIcon from '../misc/Icons/DotsIcon';
-import LeftArrowIcon from '../misc/Icons/LeftArrowIcon';
-import PlusIcon from '../misc/Icons/PlusIcon';
-import RightArrowIcon from '../misc/Icons/RightArrowIcon';
-import MenuItem from './MenuItem';
 import {
   Redirect,
   useLocation,
   useHistory,
 } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
+
+import { menuNames } from 'config';
+
+import DotsIcon from 'component/misc/Icons/DotsIcon';
+import LeftArrowIcon from 'component/misc/Icons/LeftArrowIcon';
+import PlusIcon from 'component/misc/Icons/PlusIcon';
+import RightArrowIcon from 'component/misc/Icons/RightArrowIcon';
+import MenuItem from './MenuItem';
 
 import './scss/menu.scss';
 
 const Menu = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const history = useHistory();
   const nextList = 'l';
   const prevList = 's';
@@ -22,16 +26,16 @@ const Menu = () => {
     const { name } = evt.currentTarget.dataset;
 
     switch ( name ) {
-      case 'add':
-        history.push( '/list/l ' );
+      case menuNames.ADD:
+        history.push( `/list/${ uuid() }`, { isNew: true });
         break;
-      case 'next':
+      case menuNames.NEXT:
         history.push( `/list/${ nextList }` );
         break;
-      case 'prev':
+      case menuNames.PREV:
         history.push( `/list/${ prevList }` );
         break;
-      case 'lists':
+      case menuNames.LISTS:
         history.push( '/' );
         break;
       default:
@@ -46,17 +50,17 @@ const Menu = () => {
         text="Add list"
         clickFn={ click }
         classes={[ 'right', 'top' ]}
-        name="add"
+        name={ menuNames.ADD }
       >
         <PlusIcon />
       </MenuItem>
-      { location.pathname !== '/' && (
+      { pathname !== '/' && (
         <>
           <MenuItem
             text="Your Lists"
             clickFn={ click }
             classes={[ 'left', 'top' ]}
-            name="lists"
+            name={ menuNames.LISTS }
           >
             <DotsIcon />
           </MenuItem>
@@ -64,7 +68,7 @@ const Menu = () => {
             text="Lista#1"
             clickFn={ click }
             classes={[ 'left', 'bottom' ]}
-            name="prev"
+            name={ menuNames.PREV }
           >
             <LeftArrowIcon />
           </MenuItem>
@@ -72,7 +76,7 @@ const Menu = () => {
             text="Lista#3"
             clickFn={ click }
             classes={[ 'right', 'bottom' ]}
-            name="next"
+            name={ menuNames.NEXT }
           >
             <RightArrowIcon />
           </MenuItem>
