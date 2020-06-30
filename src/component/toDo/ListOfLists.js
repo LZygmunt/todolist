@@ -10,14 +10,14 @@ const ListOfLists = () => {
   const { toDos, dispatch } = useContext( ToDoContext );
   const history = useHistory();
 
-  const clickFn = useCallback(( id ) => {
-    history.push( `/list/${ id }` );
+  const clickFn = useCallback(( listID ) => {
+    history.push( `/list/${ listID }` );
   }, [ history ]);
 
-  const deleteItem = useCallback(( id ) => {
+  const deleteItem = useCallback(( listID ) => {
     dispatch({
       type: REMOVE_LIST,
-      listID: id,
+      payload: { listID },
     });
   }, [ dispatch ]);
 

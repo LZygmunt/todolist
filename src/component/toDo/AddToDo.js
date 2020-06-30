@@ -1,32 +1,27 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { ADD_TODO } from 'utils/constans';
 
 const AddToDo = ({
-  toDos, setToDos, handleKey,
+  listID, handleKey, dispatch,
 }) => {
   const [ text, setText ] = React.useState( '' );
 
   const addToDo = useCallback(() => {
-    console.log( 'tu? -> 1' );
-    if ( text === '' ) {
-      console.log( 'a może tu? -> 2' );
+    if ( text === '' ) { return; }
 
-      return;
-    }
-
-    setToDos(( prevToDos ) => [
-      ...prevToDos,
-      {
-        completed: false,
-        id: toDos.length,
+    dispatch({
+      type: ADD_TODO,
+      payload: {
+        listID,
         text,
       },
-    ]);
+    });
     setText( '' );
   }, [
-    setToDos,
+    dispatch,
+    listID,
     text,
-    toDos.length,
   ]);
 
   const changeInput = ( evt ) => setText( evt.target.value );
@@ -55,15 +50,11 @@ const AddToDo = ({
 };
 
 AddToDo.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  listID: PropTypes.string.isRequired,
   handleKey: PropTypes.func,
-  setToDos: PropTypes.func,
-  toDos: PropTypes.arrayOf( PropTypes.shape({ id: PropTypes.number })),
 };
 
-AddToDo.defaultProps = {
-  toDos: [],
-  handleKey: () => {},
-  setToDos: () => {},
-};
+AddToDo.defaultProps = { handleKey: () => {} };
 
 export default AddToDo;

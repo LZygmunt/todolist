@@ -9,11 +9,11 @@ import { toDoReducer } from 'reducers/toDoReducer';
 const ToDoContextProvider = ({ children }) => {
   const [ toDos, dispatch ] = useReducer(
     toDoReducer,
-    [],
+    {},
     () => {
       const localData = localStorage.getItem( storageKey );
 
-      return localData ? JSON.parse( localData ) : [];
+      return localData ? JSON.parse( localData ) : {};
     },
   );
 

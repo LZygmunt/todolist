@@ -11,9 +11,8 @@ export const toDoReducer = ( state, action ) => {
     type,
     payload: {
       listID,
-      listText,
+      text,
       toDoID,
-      toDoText,
       toDoList,
     },
   } = action;
@@ -27,7 +26,7 @@ export const toDoReducer = ( state, action ) => {
       newState[ listID ].toDoList[ id ] = {
         completed: false,
         id,
-        text: toDoText,
+        text,
       };
 
       return newState;
@@ -46,7 +45,7 @@ export const toDoReducer = ( state, action ) => {
         ...state,
         [ listID ]: {
           id: listID,
-          text: listText,
+          text,
           toDoList,
         },
       };

@@ -19,7 +19,7 @@ const List = ({
    * }
    */
 
-  const mappedList = list.map(( item ) => (
+  const mappedList = Object.values( list ).map(( item ) => (
     <Item
       key={ item.id }
       item={ item }
