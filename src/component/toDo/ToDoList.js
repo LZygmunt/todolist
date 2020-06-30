@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { ToDoContext } from 'contexts/ToDoContext';
-import { TOGGLE_COMPLETE_TODO } from 'utils/constans';
+import { REMOVE_TODO, TOGGLE_COMPLETE_TODO } from 'utils/constans';
 
 import AddToDo from './AddToDo';
 import List from './List';
@@ -27,7 +27,7 @@ const ToDoList = () => {
     }
   }, [
     id,
-    state?.isNew,
+    state,
     toDos,
   ]);
 
@@ -41,9 +41,14 @@ const ToDoList = () => {
     });
   }, [ dispatch, id ]);
 
-  const deleteToDo = ( id ) => {
-    // setToDos( prevToDos => prevToDos.filter( toDo => toDo.id !== id ));
-    console.log( 'remove' );
+  const deleteToDo = ( toDoID ) => {
+    dispatch({
+      type: REMOVE_TODO,
+      payload: {
+        toDoID,
+        listID: id,
+      },
+    });
   };
 
   /*
