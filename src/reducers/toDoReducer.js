@@ -2,35 +2,59 @@ import {
   ADD_LIST,
   ADD_TODO,
   REMOVE_LIST,
-  REMOVE_TODO,
+  REMOVE_TODO, TOGGLE_COMPLETE_TODO,
 } from 'utils/constans';
 import { v4 as uuid } from 'uuid';
 
 export const toDoReducer = ( state, action ) => {
-  let id;
+  const {
+    type,
+    payload: {
+      listID,
+      listText,
+      toDoID,
+      toDoText,
+      toDoList,
+    },
+  } = action;
+  let id, newState;
 
-  switch ( action.type ) {
-    case ADD_TODO: // action: { listID, toDoText, type } ŹLE!!!!
-      id = state.findIndex(( list ) => list.id === action.listID );
-      state[ id ].toDoList.push({
+  switch ( type ) {
+    case ADD_TODO: // action: {{ listID, toDoText }, type }
+      id = uuid();
+      newState = { ...state };
+
+      newState[ listID ].toDoList[ id ] = {
         completed: false,
-        id: uuid(),
-        text: action.toDoText,
-      });
+        id,
+        text: toDoText,
+      };
 
-      return state;
-    case REMOVE_TODO: // action: { listID, toDoID, type }
-      return [ ...state ];
-    case ADD_LIST: // action: { listText, toDoList, type }
-      state.push({
-        id: uuid(),
-        text: action.listText,
-        toDoList: action.toDoList,
-      });
+      return newState;
+    case TOGGLE_COMPLETE_TODO: // action: {{ listID, toDoID }, type }
+      newState = { ...state };
+      newState[ listID ].toDoList[ toDoID ].completed = !newState[ listID ].toDoList[ toDoID ].completed;
 
-      return state;
-    case REMOVE_LIST: // action: { listID, type }
-      return state.filter(( list ) => list.id !== action.listID );
+      return newState;
+    case REMOVE_TODO: // action: {{ listID, toDoID }, type }
+      newState = { ...state };
+      delete newState[ listID ].toDoList[ toDoID ];
+
+      return newState;
+    case ADD_LIST: // action: {{ listID, listText, toDoList }, type }
+      return {
+        ...state,
+        [ listID ]: {
+          id: listID,
+          text: listText,
+          toDoList,
+        },
+      };
+    case REMOVE_LIST: // action: {{ listID }, type }
+      newState = { ...state };
+      delete newState[ listID ];
+
+      return newState;
     default:
       return state;
   }
