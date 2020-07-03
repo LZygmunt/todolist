@@ -1,10 +1,33 @@
 import {
   ADD_LIST,
   ADD_TODO,
+  SET_NAV,
   REMOVE_LIST,
-  REMOVE_TODO, TOGGLE_COMPLETE_TODO,
+  REMOVE_TODO,
+  TOGGLE_COMPLETE_TODO,
+  BANNED_NAMES,
 } from 'utils/constans';
 import { v4 as uuid } from 'uuid';
+
+const getNextAndPrev = ( obj, id ) => {
+  let next, prev;
+
+  const keys = Object.keys( obj ).filter(( el ) => !BANNED_NAMES.includes( el ));
+  const found = keys.findIndex(( el ) => el === id );
+
+  const curr = id;
+
+  prev = keys[ found - 1 ];
+  next = keys[ found + 1 ];
+  if ( found <= 0 ) { prev = keys[ keys.length - 1 ]; }
+  if ( found === keys.length - 1 || found === -1 ) { [ next ] = keys; }
+
+  return {
+    next,
+    prev,
+    curr,
+  };
+};
 
 export const toDoReducer = ( state, action ) => {
   const {
@@ -52,6 +75,13 @@ export const toDoReducer = ( state, action ) => {
     case REMOVE_LIST: // action: {{ listID }, type }
       newState = { ...state };
       delete newState[ listID ];
+
+      return newState;
+    case SET_NAV: // action: {{ listID }, type }
+      newState = {
+        ...state,
+        ...getNextAndPrev({ ...state }, listID ),
+      };
 
       return newState;
     default:

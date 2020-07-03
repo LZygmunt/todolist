@@ -1,12 +1,15 @@
-import React, { useCallback } from 'react';
-import {
-  Redirect,
-  useLocation,
-  useHistory,
-} from 'react-router-dom';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
 import { menuNames } from 'config';
+import { ToDoContext } from 'contexts/ToDoContext';
+import { SET_NAV } from 'utils/constans';
 
 import DotsIcon from 'component/misc/Icons/DotsIcon';
 import LeftArrowIcon from 'component/misc/Icons/LeftArrowIcon';
@@ -19,21 +22,54 @@ import './scss/menu.scss';
 const Menu = () => {
   const { pathname } = useLocation();
   const history = useHistory();
-  const nextList = 'l';
-  const prevList = 's';
+
+  const { toDos, dispatch } = useContext( ToDoContext );
+  const [ nav, setNav ] = useState({
+    next: '',
+    prev: '',
+  });
+
+  useEffect(() => {
+    if ( toDos?.next && toDos?.prev ) {
+      setNav({
+        next: {
+          id: toDos.next,
+          text: toDos[ toDos.next ].text,
+        },
+        prev: {
+          id: toDos.prev,
+          text: toDos[ toDos.prev ].text,
+        },
+      });
+    }
+  }, [ toDos ]);
 
   const click = useCallback(( evt ) => {
     const { name } = evt.currentTarget.dataset;
+    let id;
 
     switch ( name ) {
       case menuNames.ADD:
-        history.push( `/list/${ uuid() }`, { isNew: true });
+        id = uuid();
+        history.push( `/list/${ id }`, { isNew: true });
+        dispatch({
+          type: SET_NAV,
+          payload: { listID: id },
+        });
         break;
       case menuNames.NEXT:
-        history.push( `/list/${ nextList }` );
+        history.push( `/list/${ nav.next.id }` );
+        dispatch({
+          type: SET_NAV,
+          payload: { listID: nav.next.id },
+        });
         break;
       case menuNames.PREV:
-        history.push( `/list/${ prevList }` );
+        history.push( `/list/${ nav.prev.id }` );
+        dispatch({
+          type: SET_NAV,
+          payload: { listID: nav.prev.id },
+        });
         break;
       case menuNames.LISTS:
         history.push( '/' );
@@ -42,7 +78,11 @@ const Menu = () => {
         console.log( name );
         break;
     }
-  }, [ history ]);
+  }, [
+    dispatch,
+    history,
+    nav,
+  ]);
 
   return (
     <div id="menu">
@@ -65,7 +105,7 @@ const Menu = () => {
             <DotsIcon />
           </MenuItem>
           <MenuItem
-            text="Lista#1"
+            text={ nav.prev.text }
             clickFn={ click }
             classes={[ 'left', 'bottom' ]}
             name={ menuNames.PREV }
@@ -73,7 +113,7 @@ const Menu = () => {
             <LeftArrowIcon />
           </MenuItem>
           <MenuItem
-            text="Lista#3"
+            text={ nav.next.text }
             clickFn={ click }
             classes={[ 'right', 'bottom' ]}
             name={ menuNames.NEXT }

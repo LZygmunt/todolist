@@ -135,6 +135,8 @@ const app = {
       },
     },
   },
+  next: '',
+  prev: '',
 };
 
 export default app;
