@@ -5,6 +5,8 @@ import React, {
   useState,
 } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import _isEmpty from 'lodash/isEmpty';
+
 import { ToDoContext } from 'contexts/ToDoContext';
 import { REMOVE_TODO, TOGGLE_COMPLETE_TODO } from 'utils/constans';
 
@@ -20,7 +22,7 @@ const ToDoList = () => {
   const [ list, setList ] = useState([]);
 
   useEffect(() => {
-    if ( state?.isNew ) {
+    if ( state?.isNew && _isEmpty( toDos[ id ])) {
       setList([]);
     } else {
       setList( toDos[ id ].toDoList );
@@ -51,22 +53,17 @@ const ToDoList = () => {
     });
   };
 
-  /*
-   * React.useEffect( () => {
-   *   if ( !fetched ) {
-   *     setToDos( ToDosData );
-   *     setFetch( true );
-   *   }
-   * }, [ toDos, fetched ]);
-   */
-
   return (
     <List
       list={ list }
       clickFn={ toggleComplete }
       deleteItem={ deleteToDo }
     >
-      <AddToDo listID={ id } dispatch={ dispatch } />
+      <AddToDo
+        listID={ id }
+        dispatch={ dispatch }
+        isNew={ state?.isNew }
+      />
     </List>
   );
 };
