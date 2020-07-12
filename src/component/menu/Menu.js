@@ -56,10 +56,6 @@ const Menu = () => {
           type: SET_NAV,
           payload: { listID: id },
         });
-        dispatch({
-          type: '',
-          payload: {},
-        });
         break;
       case menuNames.NEXT:
         history.push( `/list/${ nav.next.id }` );

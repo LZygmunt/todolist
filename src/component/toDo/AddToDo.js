@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 import { ADD_LIST, ADD_TODO } from 'utils/constans';
@@ -9,11 +10,10 @@ const AddToDo = ({
   dispatch,
   isNew,
 }) => {
-  const [ text, setText ] = React.useState( '' );
+  const [ text, setText ] = useState( '' );
+  const history = useHistory();
 
   const addToDo = useCallback(() => {
-    if ( text === '' ) { return; }
-
     if ( isNew ) {
       const id = uuid();
 
@@ -31,6 +31,8 @@ const AddToDo = ({
           },
         },
       });
+
+      history.push( `/list/${ listID }` );
     } else {
       dispatch({
         type: ADD_TODO,
@@ -47,6 +49,7 @@ const AddToDo = ({
     isNew,
     listID,
     text,
+    history,
   ]);
 
   const changeInput = ( evt ) => setText( evt.target.value );
