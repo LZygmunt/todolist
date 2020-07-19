@@ -10,14 +10,8 @@ const List = ({
   children,
 }) => {
   const sort = () => {
-    console.log( 'sortuje' );
+    // console.log( 'sortuje' );
   };
-
-  /*
-   * const deleteItem = id => {
-   * return list.filter( toDo => toDo.id !== id );
-   * }
-   */
 
   const mappedList = Object.values( list ).map(( item ) => (
     <Item

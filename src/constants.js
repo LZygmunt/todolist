@@ -1,4 +1,4 @@
-const config = {
+const constants = {
   storageKey: 'todos',
   menuNames: {
     ADD: 'add',
@@ -8,4 +8,4 @@ const config = {
   },
 };
 
-module.exports = config;
+module.exports = constants;

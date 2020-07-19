@@ -7,7 +7,7 @@ import React, {
 import { useLocation, useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
-import { menuNames } from 'config';
+import { menuNames } from 'constants';
 import { ToDoContext } from 'contexts/ToDoContext';
 import { SET_NAV } from 'utils/constans';
 

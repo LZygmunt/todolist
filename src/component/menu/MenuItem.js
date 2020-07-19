@@ -1,6 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const FONT_SIZE = 20;
+
+const getElWidth = ( text ) => {
+  const canvas = document.createElement( 'canvas' );
+  const canvasText = canvas.getContext( '2d' );
+
+  canvasText.font = '20px Serif';
+  let canvasTextWidth = canvasText.measureText( text ).width;
+
+  canvasTextWidth = Math.ceil( canvasTextWidth ) + 1.5 * FONT_SIZE;
+
+  return canvasTextWidth;
+};
+
 const MenuItem = ({
   text,
   clickFn,
@@ -8,29 +22,22 @@ const MenuItem = ({
   name,
   children,
 }) => {
-  const [ textWidth, setTextWidth ] = React.useState( 0 );
   const [ isOver, setIsOver ] = React.useState( false );
-  const em = 20;
+  const classNames = [
+    'menu-item',
+    'box',
+    ...classes,
+  ].join( ' ' );
 
-  React.useEffect(() => {
-    const canvas = document.createElement( 'canvas' );
-    const canvasText = canvas.getContext( '2d' );
+  const textWidth = getElWidth( text );
 
-    canvasText.font = '20px Serif';
-    let canvasTextWidth = canvasText.measureText( text ).width;
-
-    canvasTextWidth = Math.ceil( canvasTextWidth ) + 1.5 * em;
-    setTextWidth( canvasTextWidth );
-
-  }, [ textWidth, text ]);
-
-  const styleDiv = { [ classes[ 0 ] ]: `-${ isOver ? textWidth + 1.5 * em : 0 }px` };
+  const styleDiv = { [ classes[ 0 ] ]: `-${ isOver ? textWidth + 1.5 * FONT_SIZE : 0 }px` };
 
   const styleP = { width: `${ isOver ? textWidth : 0 }px` };
 
   return (
     <div
-      className={ `menu-item box ${ classes.join( ' ' ) }` }
+      className={ classNames }
       onClick={ clickFn }
       onMouseEnter={() => setIsOver( true )}
       onMouseLeave={() => setIsOver( false )}
