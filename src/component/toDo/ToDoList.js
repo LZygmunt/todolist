@@ -8,7 +8,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import _isEmpty from 'lodash/isEmpty';
 
 import { ToDoContext } from 'contexts/ToDoContext';
-import { REMOVE_TODO, TOGGLE_COMPLETE_TODO } from 'utils/constans';
+import { REMOVE_TODO, TOGGLE_COMPLETE_TODO } from 'utils/constants';
 
 import AddToDo from './AddToDo';
 import List from './List';
@@ -63,6 +63,7 @@ const ToDoList = () => {
         listID={ id }
         dispatch={ dispatch }
         isNew={ state?.isNew }
+        changeNameActive={ toDos.changeNameActive }
       />
     </List>
   );

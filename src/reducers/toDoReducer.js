@@ -6,7 +6,9 @@ import {
   REMOVE_TODO,
   TOGGLE_COMPLETE_TODO,
   BANNED_NAMES,
-} from 'utils/constans';
+  CHANGE_LIST_NAME_EXECUTE,
+  CHANGE_LIST_NAME_INIT,
+} from 'utils/constants';
 import { v4 as uuid } from 'uuid';
 
 const getNextAndPrev = ( obj, id ) => {
@@ -81,6 +83,24 @@ export const toDoReducer = ( state, action ) => {
       newState = {
         ...state,
         ...getNextAndPrev({ ...state }, listID ),
+      };
+
+      return newState;
+    case CHANGE_LIST_NAME_INIT: // action: { type }
+      newState = {
+        ...state,
+        changeNameActive: true,
+      };
+
+      return newState;
+    case CHANGE_LIST_NAME_EXECUTE: // action: {{ listID, text }, type }
+      newState = {
+        ...state,
+        [ listID ]: {
+          ...state[ listID ],
+          text,
+        },
+        changeNameActive: false,
       };
 
       return newState;

@@ -3,16 +3,16 @@ import { useHistory } from 'react-router-dom';
 import _unset from 'lodash/unset';
 
 import { ToDoContext } from 'contexts/ToDoContext';
-import { REMOVE_LIST, SET_NAV } from 'utils/constans';
+import {
+  REMOVE_LIST, SET_NAV, BANNED_NAMES,
+} from 'utils/constants';
 
 import List from './List';
 
 const removeNav = ( obj ) => {
   const newObj = obj;
 
-  _unset( newObj, 'curr' );
-  _unset( newObj, 'next' );
-  _unset( newObj, 'prev' );
+  BANNED_NAMES.forEach(( el ) => _unset( newObj, el ));
 
   return newObj;
 };

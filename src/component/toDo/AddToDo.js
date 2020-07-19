@@ -2,13 +2,19 @@ import React, { useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
-import { ADD_LIST, ADD_TODO } from 'utils/constans';
+
+import {
+  ADD_LIST,
+  ADD_TODO,
+  CHANGE_LIST_NAME_EXECUTE,
+} from 'utils/constants';
 
 const AddToDo = ({
   listID,
-  handleKey,
+  // handleKey,
   dispatch,
   isNew,
+  changeNameActive,
 }) => {
   const [ text, setText ] = useState( '' );
   const history = useHistory();
@@ -52,13 +58,43 @@ const AddToDo = ({
     history,
   ]);
 
+  const changeListName = useCallback(() => {
+    dispatch({
+      type: CHANGE_LIST_NAME_EXECUTE,
+      payload: {
+        listID,
+        text,
+      },
+    });
+
+    setText( '' );
+  }, [
+    dispatch,
+    listID,
+    text,
+  ]);
+
+  const onCLick = useCallback(() => changeNameActive ? changeListName() : addToDo(), [
+    addToDo,
+    changeListName,
+    changeNameActive,
+  ]);
+
+  const handleKey = useCallback(( evt ) => {
+    if ( evt.key === 'Enter' ) {
+      onCLick();
+    }
+  }, [ onCLick ]);
+
   const changeInput = ( evt ) => setText( evt.target.value );
+
+  const placeholder = changeNameActive ? 'Type List Name...' : 'Type ToDo...';
 
   return (
     <div id="add" className="todo-item">
       <i
         className="add"
-        onClick={ addToDo }
+        onClick={ onCLick }
         onKeyPress={ handleKey }
         role="button"
         tabIndex="0"
@@ -68,10 +104,11 @@ const AddToDo = ({
       <input
         type="text"
         name="text"
-        placeholder="Type ToDo..."
-        aria-placeholder="Type ToDo..."
+        placeholder={ placeholder }
+        aria-placeholder={ placeholder }
         value={ text }
         onChange={ changeInput }
+        onKeyPress={ handleKey }
       />
     </div>
   );
@@ -80,12 +117,14 @@ const AddToDo = ({
 AddToDo.propTypes = {
   dispatch: PropTypes.func.isRequired,
   listID: PropTypes.string.isRequired,
-  handleKey: PropTypes.func,
+  // handleKey: PropTypes.func,
+  changeNameActive: PropTypes.bool,
   isNew: PropTypes.bool,
 };
 
 AddToDo.defaultProps = {
-  handleKey: () => {},
+  // handleKey: () => {},
+  changeNameActive: false,
   isNew: false,
 };
 

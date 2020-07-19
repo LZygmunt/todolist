@@ -7,9 +7,8 @@ import React, {
 import { useLocation, useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
-import { menuNames } from 'constants';
+import { menuNames, SET_NAV } from 'utils/constants';
 import { ToDoContext } from 'contexts/ToDoContext';
-import { SET_NAV } from 'utils/constans';
 
 import DotsIcon from 'component/misc/Icons/DotsIcon';
 import LeftArrowIcon from 'component/misc/Icons/LeftArrowIcon';

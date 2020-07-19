@@ -1,0 +1,18 @@
+.list-name {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: .5em 1em;
+  color: #333333;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
+
+  &:hover {
+    background-color: #f3f3f3;
+    bottom: -1px;
+    right: -1px;
+  }
+
+  p { margin: 0; }
+}

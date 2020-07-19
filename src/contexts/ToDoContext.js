@@ -2,7 +2,7 @@ import React, {
   createContext, useEffect, useReducer,
 } from 'react';
 import PropTypes from 'prop-types';
-import { storageKey } from 'constants';
+import { storageKey } from 'utils/constants';
 
 import { toDoReducer } from 'reducers/toDoReducer';
 
