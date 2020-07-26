@@ -10,10 +10,10 @@ import { v4 as uuid } from 'uuid';
 import { menuNames, SET_NAV } from 'utils/constants';
 import { ToDoContext } from 'contexts/ToDoContext';
 
-import DotsIcon from 'component/misc/Icons/DotsIcon';
-import LeftArrowIcon from 'component/misc/Icons/LeftArrowIcon';
-import PlusIcon from 'component/misc/Icons/PlusIcon';
-import RightArrowIcon from 'component/misc/Icons/RightArrowIcon';
+import DotsIcon from 'components/misc/Icons/DotsIcon';
+import LeftArrowIcon from 'components/misc/Icons/LeftArrowIcon';
+import PlusIcon from 'components/misc/Icons/PlusIcon';
+import RightArrowIcon from 'components/misc/Icons/RightArrowIcon';
 import MenuItem from './MenuItem';
 
 import './scss/menu.scss';

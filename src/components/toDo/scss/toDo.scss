@@ -34,7 +34,9 @@
       margin-right: 10px;
       margin-bottom: 5px;
 
-      &.add { background-color: #4fbf4f; }
+      &.add {
+        background-color: #4fbf4f;
+      }
 
       &.remove {
         position: absolute;
@@ -79,7 +81,9 @@
       font-weight: bold;
       font-family: inherit;
 
-      &:focus { outline: 0; }
+      &:focus {
+        outline: 0;
+      }
     }
   }
 }

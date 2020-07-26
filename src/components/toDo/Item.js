@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import HamburgerIcon from 'component/misc/Icons/HamburgerIcon';
-import RemoveIcon from 'component/misc/Icons/RemoveIcon';
+import HamburgerIcon from 'components/misc/Icons/HamburgerIcon';
+import RemoveIcon from 'components/misc/Icons/RemoveIcon';
 
 const Item = ({
   item,
