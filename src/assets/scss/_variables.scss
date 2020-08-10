@@ -1,0 +1,41 @@
+$colors: (
+  appWhite: #FFFFFF,
+  appWhitesmoke: #F5F5F5,
+  appDirtyWhite: #F3F3F3,
+  appLightSilver: #EEEEEE,
+  appSilver: #CECECE,
+  appMint: #CCE8CC,
+  appRed: #bf4f4f,
+  appGrey:  #999999,
+  appGreen: #4fbf4f,
+  appDarkCharcoal: #333333,
+);
+
+$fontColors: (
+  names: map_get($colors, appDarkCharcoal),
+  iconButton: map_get($colors, appWhite),
+  checked: map_get($colors, appGrey)
+);
+
+$backgroundsColors: (
+  app: map_get($colors, appWhitesmoke),
+  hoverListName: map_get($colors, appDirtyWhite),
+  hoverMenuItem: map_get($colors, appWhitesmoke),
+  activeMenuItem: map_get($colors, appLightSilver),
+  elements: map_get($colors, appWhite),
+  hamburger: map_get($colors, appMint),
+  hoverToDoItem: map_get($colors, appWhitesmoke),
+  activeToDoItem: map_get($colors, appLightSilver),
+  addButton: map_get($colors, appGreen),
+  removeButton: map_get($colors, appRed),
+  icon: map_get($colors, appSilver)
+);
+
+$shadowColors: (
+  menu: map_get($colors, appWhitesmoke)
+);
+
+$borderColors: (
+  separator: map_get($colors, appSilver),
+  addSeparator: map_get($colors, appDarkCharcoal)
+);
