@@ -31,28 +31,23 @@ const List = ({
   );
 };
 
+const listShape = PropTypes.shape({
+  next: PropTypes.string,
+  prev: PropTypes.string,
+});
+
 List.propTypes = {
   children: PropTypes.node,
   clickFn: PropTypes.func,
   deleteItem: PropTypes.func,
-  list: PropTypes.arrayOf( PropTypes.shape({
-    clickFn: PropTypes.func,
-    deleteItem: PropTypes.func,
-    id: PropTypes.string,
-    item: PropTypes.shape({
-      completed: PropTypes.bool,
-      id: PropTypes.string,
-      text: PropTypes.string,
-    }),
-    sort: PropTypes.func,
-  })),
+  list: listShape,
 };
 
 List.defaultProps = {
   children: null,
   clickFn: () => {},
   deleteItem: () => {},
-  list: [],
+  list: {},
 };
 
 export default List;

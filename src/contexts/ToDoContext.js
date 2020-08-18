@@ -13,7 +13,7 @@ const ToDoContextProvider = ({ children }) => {
     () => {
       const localData = localStorage.getItem( storageKey );
 
-      return localData ? JSON.parse( localData ) : {};
+      return localData ? JSON.parse( localData ) : {};
     },
   );
 

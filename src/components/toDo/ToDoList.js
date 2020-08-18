@@ -19,11 +19,11 @@ const ToDoList = () => {
   const { id } = useParams();
   const { state } = useLocation();
   const { toDos, dispatch } = useContext( ToDoContext );
-  const [ list, setList ] = useState([]);
+  const [ list, setList ] = useState({});
 
   useEffect(() => {
     if ( state?.isNew && _isEmpty( toDos[ id ])) {
-      setList([]);
+      setList({});
     } else {
       setList( toDos[ id ].toDoList );
     }
