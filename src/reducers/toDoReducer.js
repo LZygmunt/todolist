@@ -8,8 +8,10 @@ import {
   BANNED_NAMES,
   CHANGE_LIST_NAME_EXECUTE,
   CHANGE_LIST_NAME_INIT,
+  LOAD_DEFAULT,
 } from 'utils/constants';
 import { v4 as uuid } from 'uuid';
+import mockToDos from 'utils/toDosData';
 
 const getNextAndPrev = ( obj, id ) => {
   let next, prev;
@@ -101,6 +103,13 @@ export const toDoReducer = ( state, action ) => {
           text,
         },
         changeNameActive: false,
+      };
+
+      return newState;
+    case LOAD_DEFAULT: // action: { type }
+      newState = {
+        ...state,
+        ...mockToDos,
       };
 
       return newState;

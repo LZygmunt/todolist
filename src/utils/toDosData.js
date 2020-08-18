@@ -5,47 +5,47 @@ const app = {
     toDoList: {
       'my-id-list-1-todo-1': {
         id: 'my-id-list-1-todo-1',
-        text: 'Take out the trash',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         completed: true,
       },
       'my-id-list-1-todo-2': {
         id: 'my-id-list-1-todo-2',
-        text: 'Grocery shopping',
+        text: 'Suspendisse nec nibh in lectus iaculis ultricies in at nisi',
         completed: false,
       },
       'my-id-list-1-todo-3': {
         id: 'my-id-list-1-todo-3',
-        text: 'Clean gecko tank',
+        text: 'Integer eget orci ac quam mollis lobortis',
         completed: false,
       },
       'my-id-list-1-todo-4': {
         id: 'my-id-list-1-todo-4',
-        text: 'Mow lawn',
+        text: 'Pellentesque sed imperdiet massa, ut imperdiet ipsum',
         completed: true,
       },
       'my-id-list-1-todo-5': {
         id: 'my-id-list-1-todo-5',
-        text: 'Catch up on Arrested Development',
+        text: 'Sed ac odio vel ipsum sodales imperdiet vel ut mi',
         completed: false,
       },
       'my-id-list-1-todo-6': {
         id: 'my-id-list-1-todo-6',
-        text: 'Fall in coding',
+        text: 'Nunc quam risus, mollis non suscipit at, vestibulum at diam',
         completed: false,
       },
       'my-id-list-1-todo-7': {
         id: 'my-id-list-1-todo-7',
-        text: 'Listen Dio',
+        text: 'Praesent id mollis quam',
         completed: true,
       },
       'my-id-list-1-todo-8': {
         id: 'my-id-list-1-todo-8',
-        text: 'Destroy nothing',
+        text: 'Morbi in volutpat orci, non tempor dui',
         completed: true,
       },
       'my-id-list-1-todo-9': {
         id: 'my-id-list-1-todo-9',
-        text: 'Get the carpet and through out',
+        text: 'Ut elit felis, rutrum a nulla mattis, malesuada blandit ligula',
         completed: false,
       },
     },
@@ -56,17 +56,17 @@ const app = {
     toDoList: {
       'my-id-list-2-todo-0': {
         id: 'my-id-list-2-todo-0',
-        text: 'Wpisowe',
+        text: 'Vestibulum scelerisque id augue quis sagittis',
         completed: true,
       },
       'my-id-list-2-todo-2': {
         id: 'my-id-list-2-todo-2',
-        text: 'Nic nierobienie',
+        text: 'Cras congue nulla dolor, in lobortis elit semper et',
         completed: false,
       },
       'my-id-list-2-todo-3': {
         id: 'my-id-list-2-todo-3',
-        text: 'Bycie montrym',
+        text: 'Nulla ultricies nibh eu rhoncus blandit',
         completed: false,
       },
     },
@@ -77,12 +77,12 @@ const app = {
     toDoList: {
       'my-id-list-3-todo-1': {
         id: 'my-id-list-3-todo-1',
-        text: 'Wpisowe',
+        text: 'Nulla vitae mattis leo',
         completed: true,
       },
       'my-id-list-3-todo-2': {
         id: 'my-id-list-3-todo-2',
-        text: 'Stage gupka',
+        text: 'Proin purus magna, mattis vitae suscipit ac, dapibus a massa',
         completed: true,
       },
     },
@@ -93,22 +93,22 @@ const app = {
     toDoList: {
       'my-id-list-4-todo-1': {
         id: 'my-id-list-4-todo-1',
-        text: 'Wpisowe',
+        text: 'Vestibulum dui ligula, maximus sed fermentum et, vulputate in nisi',
         completed: true,
       },
       'my-id-list-4-todo-2': {
         id: 'my-id-list-4-todo-2',
-        text: 'Wpisowe',
+        text: 'Proin congue dolor leo. Suspendisse potenti',
         completed: true,
       },
       'my-id-list-4-todo-3': {
         id: 'my-id-list-4-todo-3',
-        text: 'Wpisasdgowe',
+        text: 'Nunc a efficitur est, quis elementum massa',
         completed: false,
       },
       'my-id-list-4-todo-4': {
         id: 'my-id-list-4-todo-4',
-        text: 'false',
+        text: 'Vivamus vitae nunc eu neque mollis sodales',
         completed: false,
       },
     },
@@ -119,7 +119,12 @@ const app = {
     toDoList: {
       'my-id-list-5-todo-1': {
         id: 'my-id-list-5-todo-1',
-        text: 'Wpisowe',
+        text: `Nunc a efficitur est, quis elementum massa. Vivamus vitae nunc eu neque mollis sodales. Etiam feugiat
+         duieget eros viverra, vitae sodales arcu finibus. Suspendisse et ultrices ligula. Phasellus sodales ligula
+         a risus consequat euismod. Pellentesque tristique dictum arcu, vel porta nisl. Vivamus placerat massa purus,
+         id volutpat ligula elementum non. Mauris a dolor pulvinar, sollicitudin neque non, vulputate nisi.
+         Sed ultricies interdum auctor. Etiam eu lorem sit amet risus efficitur elementum.
+         Curabitur imperdiet in est ac lacinia.`,
         completed: true,
       },
     },
@@ -130,7 +135,7 @@ const app = {
     toDoList: {
       'my-id-list-6-todo-1': {
         id: 'my-id-list-6-todo-1',
-        text: 'Wpisowe',
+        text: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...',
         completed: true,
       },
     },

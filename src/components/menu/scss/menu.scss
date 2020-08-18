@@ -8,6 +8,7 @@
   width: calc(100% + 2em);
   display: grid;
   font-size: 20px;
+  grid-template-rows: repeat(auto-fill, 100%);
 }
 
 .menu {
@@ -85,9 +86,5 @@
         @include sideBorder(left);
       }
     }
-
-    &.top { grid-row: 1/1; }
-
-    &.bottom { grid-row: 2/2; }
   }
 }

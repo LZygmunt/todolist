@@ -74,7 +74,7 @@
     "indent": [ 2, 2, {
       "SwitchCase": 1,
       "flatTernaryExpressions": true,
-      "offsetTernaryExpressions": true,
+      "offsetTernaryExpressions": false,
       "ignoreComments": true
     }],
     "jsx-quotes": [ 2, "prefer-double"],
@@ -94,7 +94,7 @@
       "tabWidth": 2,
       "ignoreUrls": true
     }],
-    "multiline-comment-style": [ 2, "starred-block" ],
+    "multiline-comment-style": [ 2, "bare-block" ],
     "multiline-ternary": [ 2, "always-multiline" ],
     "new-parens": [ 2, "always" ],
     "newline-per-chained-call": [ 2 ],

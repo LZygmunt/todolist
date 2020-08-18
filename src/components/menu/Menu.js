@@ -7,13 +7,16 @@ import React, {
 import { useLocation, useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
-import { menuNames, SET_NAV } from 'utils/constants';
+import {
+  menuNames, SET_NAV, LOAD_DEFAULT,
+} from 'utils/constants';
 import { ToDoContext } from 'contexts/ToDoContext';
 
 import DotsIcon from 'components/misc/Icons/DotsIcon';
 import LeftArrowIcon from 'components/misc/Icons/LeftArrowIcon';
 import PlusIcon from 'components/misc/Icons/PlusIcon';
 import RightArrowIcon from 'components/misc/Icons/RightArrowIcon';
+import ImportIcon from 'components/misc/Icons/ImportIcon';
 import MenuItem from './MenuItem';
 
 import './scss/menu.scss';
@@ -73,6 +76,12 @@ const Menu = () => {
       case menuNames.LISTS:
         history.push( '/' );
         break;
+      case menuNames.LOAD_DEFAULT:
+        dispatch({
+          type: LOAD_DEFAULT,
+          payload: {},
+        });
+        break;
       default:
         console.log( name );
         break;
@@ -88,7 +97,7 @@ const Menu = () => {
       <MenuItem
         text="Add list"
         clickFn={ click }
-        classes={[ 'right', 'top' ]}
+        classes="left"
         name={ menuNames.ADD }
       >
         <PlusIcon />
@@ -98,7 +107,7 @@ const Menu = () => {
           <MenuItem
             text="Your Lists"
             clickFn={ click }
-            classes={[ 'left', 'top' ]}
+            classes="right"
             name={ menuNames.LISTS }
           >
             <DotsIcon />
@@ -106,7 +115,7 @@ const Menu = () => {
           <MenuItem
             text={ nav.prev.text }
             clickFn={ click }
-            classes={[ 'left', 'bottom' ]}
+            classes="left"
             name={ menuNames.PREV }
           >
             <LeftArrowIcon />
@@ -114,13 +123,21 @@ const Menu = () => {
           <MenuItem
             text={ nav.next.text }
             clickFn={ click }
-            classes={[ 'right', 'bottom' ]}
+            classes="right"
             name={ menuNames.NEXT }
           >
             <RightArrowIcon />
           </MenuItem>
         </>
       ) }
+      <MenuItem
+        text="Load test value"
+        clickFn={ click }
+        classes="left"
+        name={ menuNames.LOAD_DEFAULT }
+      >
+        <ImportIcon />
+      </MenuItem>
     </div>
   );
 };

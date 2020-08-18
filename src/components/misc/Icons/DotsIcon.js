@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DotsIcon = () => (
-  <svg className="dots icon" viewBox="0 0 100 100">
+  <svg className="dots icon" viewBox="-50 0 100 100">
     <circle
       cx="20"
       cy="0"

@@ -13,7 +13,7 @@ const getElWidth = ( text ) => {
 
   canvasTextWidth = Math.ceil( canvasTextWidth );
 
-  return canvasTextWidth > MAX_TEXT_WIDTH ? MAX_TEXT_WIDTH : canvasTextWidth;
+  return canvasTextWidth > MAX_TEXT_WIDTH ? MAX_TEXT_WIDTH : canvasTextWidth;
 };
 
 const MenuItem = ({
@@ -27,31 +27,33 @@ const MenuItem = ({
   const classNames = [
     'menu-item',
     'box',
-    ...classes,
+    classes,
   ].join( ' ' );
 
   const textWidth = getElWidth( text );
 
-  const styleDiv = { [ classes[ 0 ] ]: `-${ isOver ? textWidth + 1.5 * FONT_SIZE : 0 }px` };
+  const styleDiv = { [ classes ]: `-${ isOver ? textWidth + 1.5 * FONT_SIZE : 0 }px` };
 
   const styleP = { width: `${ isOver ? textWidth : 0 }px` };
 
-  return (
-    <div
-      className={ classNames }
-      onClick={ clickFn }
-      onMouseEnter={() => setIsOver( true )}
-      onMouseLeave={() => setIsOver( false )}
-      onKeyPress={() => {}}
-      style={ styleDiv }
-      data-name={ name }
-      role="button"
-      tabIndex={ 0 }
-    >
-      <p className="text" style={ styleP }>{ text }</p>
-      { children }
-    </div>
-  );
+  return text
+    ? (
+      <div
+        className={ classNames }
+        onClick={ clickFn }
+        onMouseEnter={() => setIsOver( true )}
+        onMouseLeave={() => setIsOver( false )}
+        onKeyPress={() => {}}
+        style={ styleDiv }
+        data-name={ name }
+        role="button"
+        tabIndex={ 0 }
+      >
+        <p className="text" style={ styleP }>{ text }</p>
+        { children }
+      </div>
+    )
+    : null;
 };
 
 MenuItem.propTypes = {
@@ -59,7 +61,9 @@ MenuItem.propTypes = {
   classes: PropTypes.arrayOf( PropTypes.string ).isRequired,
   clickFn: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
 };
+
+MenuItem.defaultProps = { text: '' };
 
 export default MenuItem;
