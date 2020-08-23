@@ -1,7 +1,7 @@
 {
   "name": "todolist",
-  "version": "0.1.0",
-  "private": true,
+  "version": "2.0.0",
+  "private": false,
   "dependencies": {
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "gh-pages": "^2.2.0",
