@@ -39,3 +39,23 @@ $borderColors: (
   separator: map_get($colors, appSilver),
   addSeparator: map_get($colors, appDarkCharcoal)
 );
+
+$quantities: (
+  maxPaperHeight: 60vh,
+  minPaperHeight: 150px,
+  paperWidth: 480px,
+);
+
+$fontSizes: (
+  small: 12px,
+  regular: 16px,
+  medium: 18px,
+  big: 20px,
+  large: 24px,
+);
+
+$fontWeights: (
+  extremeThin: 100,
+  bold: 700,
+  extremeBold: 900,
+)

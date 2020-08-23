@@ -7,7 +7,7 @@
   right: 0;
   padding: .5em 1em;
   color: map_get($fontColors, names);
-  font-size: 12px;
+  font-size: map-get($fontSizes, small);
   @include transition(background-color);
   cursor: pointer;
 

@@ -1,0 +1,16 @@
+@import "../../../assets/scss/variables";
+
+.noData {
+  width: 100%;
+  height: map-get($quantities, minPaperHeight);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    width: 70%;
+    text-align: center;
+    font-size: map-get($fontSizes, large);
+    color: map-get($fontColors, names);
+  }
+}

@@ -1,7 +1,9 @@
+import NoData from 'components/noData/NoData';
 import React, { useCallback, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import _unset from 'lodash/unset';
 import _forEach from 'lodash/forEach';
+import _isEmpty from 'lodash/isEmpty';
 
 import { ToDoContext } from 'contexts/ToDoContext';
 import constants from 'utils/constants';
@@ -43,13 +45,15 @@ const ListOfLists = () => {
     });
   }, [ dispatch ]);
 
-  return (
-    <List
-      list={ removeNav( toDos ) }
-      clickFn={ clickFn }
-      deleteItem={ deleteItem }
-    />
-  );
+  return  _isEmpty( toDos )
+    ? <NoData />
+    : (
+      <List
+        list={ removeNav( toDos ) }
+        clickFn={ clickFn }
+        deleteItem={ deleteItem }
+      />
+    );
 };
 
 export default ListOfLists;

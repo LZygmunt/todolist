@@ -7,7 +7,7 @@
   left: -1em;
   width: calc(100% + 2em);
   display: grid;
-  font-size: 20px;
+  font-size: map-get($fontSizes, big);
   grid-template-rows: repeat(auto-fill, 100%);
 }
 

@@ -11,8 +11,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-weight: 100;
-    font-size: 18px;
+    font-weight: map-get($fontWeights, extremeThin);
+    font-size: map-get($fontSizes, medium);
     color: map_get($fontColors, "names");
     cursor: pointer;
 
@@ -32,8 +32,8 @@
       justify-content: center;
       align-items: center;
       font-family: inherit;
-      font-size: 16px;
-      font-weight: 900;
+      font-size: map-get($fontSizes, regular);
+      font-weight: map-get($fontWeights, extremeBold);
       color: map_get($fontColors, iconButton);
       cursor: pointer;
 
@@ -46,13 +46,6 @@
         right: 0;
         background-color: map_get($backgroundsColors, removeButton);
       }
-    }
-
-    input[type=checkbox] {
-      margin-right: 10px;
-      font-size: 30px;
-
-      &:focus { outline: 0; }
     }
 
     p {
@@ -81,7 +74,7 @@
       background: none;
       border: 0;
       color: inherit;
-      font-weight: bold;
+      font-weight: map-get($fontWeights, bold);
       font-family: inherit;
 
       &:focus {
