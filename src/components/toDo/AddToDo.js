@@ -3,11 +3,15 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 
-import {
-  ADD_LIST,
-  ADD_TODO,
-  CHANGE_LIST_NAME_EXECUTE,
-} from 'utils/constants';
+import constants from 'utils/constants';
+
+const {
+  actions: {
+    ADD_LIST,
+    ADD_TODO,
+    CHANGE_LIST_NAME_EXECUTE,
+  },
+} = constants;
 
 const AddToDo = ({
   listID,

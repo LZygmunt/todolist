@@ -1,23 +1,30 @@
-import {
-  ADD_LIST,
-  ADD_TODO,
-  SET_NAV,
-  REMOVE_LIST,
-  REMOVE_TODO,
-  TOGGLE_COMPLETE_TODO,
-  BANNED_NAMES,
-  CHANGE_LIST_NAME_EXECUTE,
-  CHANGE_LIST_NAME_INIT,
-  LOAD_DEFAULT,
-} from 'utils/constants';
+import _filter from 'lodash/filter';
+import _findIndex from 'lodash/findIndex';
+import _keys from 'lodash/keys';
 import { v4 as uuid } from 'uuid';
+import constants from 'utils/constants';
 import mockToDos from 'utils/toDosData';
+
+const {
+  actions: {
+    ADD_LIST,
+    ADD_TODO,
+    SET_NAV,
+    REMOVE_LIST,
+    REMOVE_TODO,
+    TOGGLE_COMPLETE_TODO,
+    CHANGE_LIST_NAME_EXECUTE,
+    CHANGE_LIST_NAME_INIT,
+    LOAD_DEFAULT,
+  },
+  bannedNames: BANNED_NAMES,
+} = constants;
 
 const getNextAndPrev = ( obj, id ) => {
   let next, prev;
 
-  const keys = Object.keys( obj ).filter(( el ) => !BANNED_NAMES.includes( el ));
-  const found = keys.findIndex(( el ) => el === id );
+  const keys = _filter( _keys( obj ), ( el ) => !BANNED_NAMES.includes( el ));
+  const found = _findIndex( keys, ( el ) => el === id );
 
   const curr = id;
 

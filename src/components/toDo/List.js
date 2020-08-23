@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _map from 'lodash/map';
 
 import Item from './Item';
 
@@ -13,7 +14,7 @@ const List = ({
     // console.log( 'sortuje' );
   };
 
-  const mappedList = Object.values( list ).map(( item ) => (
+  const mappedList = _map( list, ( item ) => (
     <Item
       key={ item.id }
       item={ item }

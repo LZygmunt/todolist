@@ -2,13 +2,18 @@ import React, {
   useContext, useCallback, useRef,
 } from 'react';
 import { ToDoContext } from 'contexts/ToDoContext';
-import { CHANGE_LIST_NAME_INIT } from 'utils/constants';
+import constants from 'utils/constants';
 
 import './scss/listName.scss';
 
+const {
+  actions: { CHANGE_LIST_NAME_INIT },
+  menu: { texts: { LISTS }},
+} = constants;
+
 const ListName = () => {
   const { toDos, dispatch } = useContext( ToDoContext );
-  const text = toDos[ toDos.curr ]?.text || 'ToDoList';
+  const text = toDos[ toDos.curr ]?.text || LISTS;
   const reference = useRef( null );
 
   const onMouseEnter = useCallback(() => {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FONT_SIZE = 20;
-const MAX_TEXT_WIDTH = 220; // alawys smaller by 30px than the item width
+const MAX_TEXT_WIDTH = 220; // always smaller by 30px than the item width
 
 const getElWidth = ( text ) => {
   const canvas = document.createElement( 'canvas' );
@@ -58,7 +58,7 @@ const MenuItem = ({
 
 MenuItem.propTypes = {
   children: PropTypes.node.isRequired,
-  classes: PropTypes.arrayOf( PropTypes.string ).isRequired,
+  classes: PropTypes.string.isRequired,
   clickFn: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   text: PropTypes.string,

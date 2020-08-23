@@ -8,12 +8,14 @@ import { useParams, useLocation } from 'react-router-dom';
 import _isEmpty from 'lodash/isEmpty';
 
 import { ToDoContext } from 'contexts/ToDoContext';
-import { REMOVE_TODO, TOGGLE_COMPLETE_TODO } from 'utils/constants';
+import constants from 'utils/constants';
 
 import AddToDo from './AddToDo';
 import List from './List';
 
 import './scss/toDo.scss';
+
+const { actions: { REMOVE_TODO, TOGGLE_COMPLETE_TODO }} = constants;
 
 const ToDoList = () => {
   const { id } = useParams();

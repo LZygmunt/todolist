@@ -2,9 +2,11 @@ import React, {
   createContext, useEffect, useReducer,
 } from 'react';
 import PropTypes from 'prop-types';
-import { storageKey } from 'utils/constants';
+import constants from 'utils/constants';
 
 import { toDoReducer } from 'reducers/toDoReducer';
+
+const { storageKey } = constants;
 
 const ToDoContextProvider = ({ children }) => {
   const [ toDos, dispatch ] = useReducer(

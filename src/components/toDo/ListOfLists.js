@@ -1,18 +1,25 @@
 import React, { useCallback, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import _unset from 'lodash/unset';
+import _forEach from 'lodash/forEach';
 
 import { ToDoContext } from 'contexts/ToDoContext';
-import {
-  REMOVE_LIST, SET_NAV, BANNED_NAMES,
-} from 'utils/constants';
+import constants from 'utils/constants';
 
 import List from './List';
+
+const {
+  actions: {
+    REMOVE_LIST,
+    SET_NAV,
+  },
+  bannedNames,
+} = constants;
 
 const removeNav = ( obj ) => {
   const newObj = obj;
 
-  BANNED_NAMES.forEach(( el ) => _unset( newObj, el ));
+  _forEach( bannedNames, ( el ) => _unset( newObj, el ));
 
   return newObj;
 };

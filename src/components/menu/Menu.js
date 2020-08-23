@@ -7,9 +7,7 @@ import React, {
 import { useLocation, useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
-import {
-  menuNames, SET_NAV, LOAD_DEFAULT,
-} from 'utils/constants';
+import constants from 'utils/constants';
 import { ToDoContext } from 'contexts/ToDoContext';
 
 import DotsIcon from 'components/misc/Icons/DotsIcon';
@@ -20,6 +18,11 @@ import ImportIcon from 'components/misc/Icons/ImportIcon';
 import MenuItem from './MenuItem';
 
 import './scss/menu.scss';
+
+const {
+  menu: { names: menuNames, texts: menuTexts },
+  actions: { SET_NAV, LOAD_DEFAULT },
+} = constants;
 
 const Menu = () => {
   const { pathname } = useLocation();
@@ -75,6 +78,10 @@ const Menu = () => {
         break;
       case menuNames.LISTS:
         history.push( '/' );
+        dispatch({
+          type: SET_NAV,
+          payload: {},
+        });
         break;
       case menuNames.LOAD_DEFAULT:
         dispatch({
@@ -95,7 +102,7 @@ const Menu = () => {
   return (
     <div id="menu">
       <MenuItem
-        text="Add list"
+        text={ menuTexts.ADD }
         clickFn={ click }
         classes="left"
         name={ menuNames.ADD }
@@ -105,7 +112,7 @@ const Menu = () => {
       { pathname !== '/' && (
         <>
           <MenuItem
-            text="Your Lists"
+            text={ menuTexts.LISTS }
             clickFn={ click }
             classes="right"
             name={ menuNames.LISTS }
@@ -130,14 +137,16 @@ const Menu = () => {
           </MenuItem>
         </>
       ) }
-      <MenuItem
-        text="Load test value"
-        clickFn={ click }
-        classes="left"
-        name={ menuNames.LOAD_DEFAULT }
-      >
-        <ImportIcon />
-      </MenuItem>
+      { pathname === '/' && (
+        <MenuItem
+          text={ menuTexts.LOAD_DEFAULT }
+          clickFn={ click }
+          classes="left"
+          name={ menuNames.LOAD_DEFAULT }
+        >
+          <ImportIcon />
+        </MenuItem>
+      )}
     </div>
   );
 };
