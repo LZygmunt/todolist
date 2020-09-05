@@ -8,7 +8,7 @@ $colors: (
   appRed: #bf4f4f,
   appGrey:  #999999,
   appGreen: #4fbf4f,
-  appDarkCharcoal: #333333,
+  appDarkCharcoal: #333333
 );
 
 $fontColors: (
@@ -44,6 +44,7 @@ $quantities: (
   maxPaperHeight: 60vh,
   minPaperHeight: 150px,
   paperWidth: 480px,
+  menuItemMaxWidth: 220px,
 );
 
 $fontSizes: (
@@ -58,4 +59,10 @@ $fontWeights: (
   extremeThin: 100,
   bold: 700,
   extremeBold: 900,
-)
+);
+
+:export {
+  borderColor: map-get($colors, appSilver);
+  menuItemFontSize: map-get($fontSizes, big);
+  menuItemMaxWidth: map-get($quantities, menuItemMaxWidth);
+}

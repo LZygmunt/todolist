@@ -22,10 +22,11 @@
     display: flex;
     @include transition(all);
     cursor: pointer;
+    visibility: visible;
 
     .text {
       width: 0;
-      max-width: 220px;
+      max-width: map-get($quantities, menuItemMaxWidth);
       height: 1em;
       margin: 0;
       padding: 1.25em 0;
@@ -87,4 +88,8 @@
       }
     }
   }
+}
+
+.disable {
+  visibility: hidden;
 }

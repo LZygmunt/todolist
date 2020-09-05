@@ -1,3 +1,5 @@
+import { menuItemFontSize, menuItemMaxWidth } from '../assets/scss/_variables.scss';
+
 export default{
   actions: {
     ADD_LIST: 'ADD_LIST',
@@ -29,6 +31,11 @@ export default{
       LISTS: 'Your Lists',
       LOAD_DEFAULT: 'Import sample data',
     },
+    quantities: {
+      FONT_SIZE: Number( menuItemFontSize.slice( 0, -2 )),
+      MAX_TEXT_WIDTH: Number( menuItemMaxWidth.slice( 0, -2 )), // always smaller by 30px than the item width
+    },
   },
   storageKey: 'todos',
+  globalIds: { TOOLTIP: 'TOOLTIP' },
 };

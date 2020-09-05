@@ -20,24 +20,77 @@ const {
   bannedNames: BANNED_NAMES,
 } = constants;
 
-const getNextAndPrev = ( obj, id ) => {
-  let next, prev;
+const getListInfo = ( state, listID ) => state[ listID ];
 
-  const keys = _filter( _keys( obj ), ( el ) => !BANNED_NAMES.includes( el ));
-  const found = _findIndex( keys, ( el ) => el === id );
+/* const getNextAndPrev = ( obj, id ) => {
+     let next, prev;
 
-  const curr = id;
+     const keys = _filter( _keys( obj ), ( el ) => !BANNED_NAMES.includes( el ));
+     const found = _findIndex( keys, ( el ) => el === id );
 
-  prev = keys[ found - 1 ];
-  next = keys[ found + 1 ];
-  if ( found <= 0 ) { prev = keys[ keys.length - 1 ]; }
-  if ( found === keys.length - 1 || found === -1 ) { [ next ] = keys; }
+     const curr = id;
 
-  return {
-    next,
-    prev,
-    curr,
-  };
+     prev = keys[ found - 1 ];
+     next = keys[ found + 1 ];
+     if ( found <= 0 ) { prev = keys[ keys.length - 1 ]; }
+     if ( found === keys.length - 1 || found === -1 ) { [ next ] = keys; }
+
+     return {
+       next,
+       prev,
+       curr,
+     };
+   }; */
+
+const getNextAndPrev = ( state, listID ) => {
+  const keys = _filter( _keys( state ), ( key ) => !BANNED_NAMES.includes( key ));
+
+  switch ( keys.length ) {
+    case 0: {
+      return {};
+    }
+
+    case 1: {
+      return { curr: getListInfo( state, listID ) };
+    }
+
+    case 2: {
+      return {
+        curr: getListInfo( state, listID ),
+        prev: getListInfo( state, keys[ 0 ]),
+        next: getListInfo( state, keys[ 1 ]),
+      };
+    }
+
+    default: {
+      const found = _findIndex( keys, ( key ) => key === listID );
+
+      console.log(
+        'loig', found, keys[ found - 1 ], keys[ found + 1 ],
+      );
+      if ( found <= 0 ) {
+        return {
+          curr: getListInfo( state, listID ),
+          prev: getListInfo( state, keys[ keys.length - 1 ]),
+          next: getListInfo( state, keys[ found + 1 ]),
+        };
+      }
+
+      if ( found === keys.length - 1 || found === -1  ) {
+        return {
+          curr: getListInfo( state, listID ),
+          prev: getListInfo( state, keys[ found - 1 ]),
+          next: getListInfo( state, keys[ 0 ]),
+        };
+      }
+
+      return {
+        curr: getListInfo( state, listID ),
+        prev: getListInfo( state, keys[ found - 1 ]),
+        next: getListInfo( state, keys[ found + 1 ]),
+      };
+    }
+  }
 };
 
 export const toDoReducer = ( state, action ) => {
@@ -53,7 +106,7 @@ export const toDoReducer = ( state, action ) => {
   let id, newState;
 
   switch ( type ) {
-    case ADD_TODO: // action: {{ listID, toDoText }, type }
+    case ADD_TODO: { // action: {{ listID, toDoText }, type }
       id = uuid();
       newState = { ...state };
 
@@ -64,17 +117,23 @@ export const toDoReducer = ( state, action ) => {
       };
 
       return newState;
-    case TOGGLE_COMPLETE_TODO: // action: {{ listID, toDoID }, type }
+    }
+
+    case TOGGLE_COMPLETE_TODO: { // action: {{ listID, toDoID }, type }
       newState = { ...state };
       newState[ listID ].toDoList[ toDoID ].completed = !newState[ listID ].toDoList[ toDoID ].completed;
 
       return newState;
-    case REMOVE_TODO: // action: {{ listID, toDoID }, type }
+    }
+
+    case REMOVE_TODO: { // action: {{ listID, toDoID }, type }
       newState = { ...state };
       delete newState[ listID ].toDoList[ toDoID ];
 
       return newState;
-    case ADD_LIST: // action: {{ listID, listText, toDoList }, type }
+    }
+
+    case ADD_LIST: { // action: {{ listID, listText, toDoList }, type }
       return {
         ...state,
         [ listID ]: {
@@ -83,29 +142,41 @@ export const toDoReducer = ( state, action ) => {
           toDoList,
         },
       };
-    case REMOVE_LIST: // action: {{ listID }, type }
+    }
+
+    case REMOVE_LIST: { // action: {{ listID }, type }
       newState = { ...state };
       delete newState[ listID ];
 
       return newState;
-    case SET_NAV: // action: {{ listID }, type }
+    }
+
+    case SET_NAV: { // action: {{ listID }, type }
       newState = {
         ...state,
         ...getNextAndPrev({ ...state }, listID ),
       };
 
       return newState;
-    case CHANGE_LIST_NAME_INIT: // action: { type }
+    }
+
+    case CHANGE_LIST_NAME_INIT: { // action: { type }
       newState = {
         ...state,
         changeNameActive: true,
       };
 
       return newState;
-    case CHANGE_LIST_NAME_EXECUTE: // action: {{ listID, text }, type }
+    }
+
+    case CHANGE_LIST_NAME_EXECUTE: { // action: {{ listID, text }, type }
       newState = {
         ...state,
         [ listID ]: {
+          ...state[ listID ],
+          text,
+        },
+        curr: {
           ...state[ listID ],
           text,
         },
@@ -113,14 +184,19 @@ export const toDoReducer = ( state, action ) => {
       };
 
       return newState;
-    case LOAD_DEFAULT: // action: { type }
+    }
+
+    case LOAD_DEFAULT: { // action: { type }
       newState = {
         ...state,
         ...mockToDos,
       };
 
       return newState;
-    default:
+    }
+
+    default: {
       return state;
+    }
   }
 };

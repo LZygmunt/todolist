@@ -13,7 +13,7 @@ const {
 
 const ListName = () => {
   const { toDos, dispatch } = useContext( ToDoContext );
-  const text = toDos[ toDos.curr ]?.text || LISTS;
+  const text = toDos.curr?.text || LISTS;
   const reference = useRef( null );
 
   const onMouseEnter = useCallback(() => {
@@ -38,7 +38,7 @@ const ListName = () => {
       onMouseLeave={ onMouseLeave }
       onKeyPress={() => {}}
       onClick={ changeListName }
-      ref={reference}
+      ref={ reference }
       role="button"
       tabIndex={ 0 }
     >
