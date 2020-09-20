@@ -2,6 +2,8 @@
   "name": "todolist",
   "version": "2.0.0",
   "private": false,
+  "homepage": "https://lzygmunt.github.io/todolist/",
+  "description": "This app helps you manage your ToDos. App allow to collect ToDos in lists, add and remove ToDos, add and remove Lists, mark/unmark completed state of ToDo",
   "dependencies": {
     "classnames": "^2.2.6",
     "eslint-plugin-jsx-a11y": "^6.3.1",
