@@ -1,0 +1,21 @@
+@import "../../../assets/scss/transitions";
+@import "../../../assets/scss/variables";
+
+.list-name {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: .5em 1em;
+  color: map_get($fontColors, names);
+  font-size: map-get($fontSizes, small);
+  @include transition(background-color);
+  cursor: pointer;
+
+  &:hover {
+    bottom: -1px;
+    right: -1px;
+    background-color: map_get($backgroundsColors, hoverListName);
+  }
+
+  p { margin: 0; }
+}

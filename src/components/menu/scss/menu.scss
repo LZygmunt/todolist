@@ -1,0 +1,95 @@
+@import "../../../assets/scss/transitions";
+@import "../../../assets/scss/mixins";
+@import "../../../assets/scss/variables";
+
+#menu {
+  position: absolute;
+  left: -1em;
+  width: calc(100% + 2em);
+  display: grid;
+  font-size: map-get($fontSizes, big);
+  grid-template-rows: repeat(auto-fill, 100%);
+}
+
+.menu {
+  &-item {
+    position: relative;
+    width: max-content;
+    max-width: 300px;
+    margin-bottom: .5em;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    @include transition(all);
+    cursor: pointer;
+    visibility: visible;
+
+    .text {
+      width: 0;
+      max-width: map-get($quantities, menuItemMaxWidth);
+      height: 1em;
+      margin: 0;
+      padding: 1.25em 0;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      @include textEllipsis();
+      @include transition(all);
+    }
+
+    &:hover {
+      background-color: map_get($backgroundsColors, hoverMenuItem);
+
+      .text {
+        padding-left: .75em;
+        padding-right: .75em;
+      }
+    }
+
+    &:active { background-color: map_get($backgroundsColors, activeMenuItem); }
+
+    .icon {
+      width: 1em;
+      height: 2em;
+      padding: .75em 0;
+      flex-shrink: 0;
+
+      polygon, circle, rect {
+        fill: map_get($backgroundsColors, icon
+        );
+      }
+    }
+
+    &.left {
+      left: 0;
+      @include menuShadow(.15em);
+      grid-column: 1/1;
+      text-align: right;
+
+      .icon {
+        margin-right: auto;
+        padding-right: .3em;
+        padding-left: .75em;
+        @include sideBorder(right);
+        order: -1;
+      }
+    }
+
+    &.right {
+      right: 0;
+      @include menuShadow(-.15em);
+      grid-column: 2/2;
+      justify-self: flex-end;
+
+      .icon {
+        margin-left: auto;
+        padding-left: .3em;
+        padding-right: .75em;
+        @include sideBorder(left);
+      }
+    }
+  }
+}
+
+.disable {
+  visibility: hidden;
+}

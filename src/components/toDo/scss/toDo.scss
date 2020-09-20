@@ -1,0 +1,85 @@
+@import "../../../assets/scss/mixins";
+@import "../../../assets/scss/variables";
+
+.todo {
+  &-item {
+    position: relative;
+    z-index: 0;
+    width: 70%;
+    padding: 10px 20px;
+    @include sideBorder(bottom);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: map-get($fontWeights, extremeThin);
+    font-size: map-get($fontSizes, medium);
+    color: map_get($fontColors, "names");
+    cursor: pointer;
+
+    &:hover { background-color: map_get($backgroundsColors, hoverToDoItem); }
+
+    &:active { background-color: map_get($backgroundsColors, activeToDoItem); }
+
+    i {
+      width: 1em;
+      height: 1em;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      padding: 4px;
+      border-radius: 5px;
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      font-family: inherit;
+      font-size: map-get($fontSizes, regular);
+      font-weight: map-get($fontWeights, extremeBold);
+      color: map_get($fontColors, iconButton);
+      cursor: pointer;
+
+      &.add {
+        background-color: map_get($backgroundsColors, addButton);
+      }
+
+      &.remove {
+        position: absolute;
+        right: 0;
+        background-color: map_get($backgroundsColors, removeButton);
+      }
+    }
+
+    p {
+      width: 80%;
+      word-wrap: break-word;
+    }
+
+    .checked {
+      font-style: italic;
+      color: map_get($fontColors, checked);
+      text-decoration: line-through;
+    }
+  }
+
+  &-item#add {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin: 0 auto;
+    padding-bottom: 5px;
+    background-color: map_get($backgroundsColors, elements);
+    border-bottom-color: map_get($borderColors, addSeparator);
+
+    input[type=text] {
+      width: 100%;
+      background: none;
+      border: 0;
+      color: inherit;
+      font-weight: map-get($fontWeights, bold);
+      font-family: inherit;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+}

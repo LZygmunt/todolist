@@ -1,0 +1,41 @@
+@import './assets/scss/variables.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto, sansSerif, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: whitesmoke;
+}
+
+#root {
+  padding: 50px 30px;
+  width: map-get($quantities, paperWidth);
+  min-height: map-get($quantities, minPaperHeight);
+  max-height: map-get($quantities, maxPaperHeight);
+  box-shadow:
+          0 1px 1px rgba(0, 0, 0, 0.15),
+          0 10px 0 -5px #eee,
+          0 10px 1px -4px rgba(0, 0, 0, 0.15),
+          0 20px 0 -10px #eee,
+          0 20px 1px -9px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.box {
+  border: 1px solid #cfcfcf;
+  background-color: white;
+}
+
+.non-selected {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Chrome, Edge, Opera and Firefox */
+}

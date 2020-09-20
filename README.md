@@ -1,8 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ToDo List [![App Release](https://img.shields.io/badge/dynamic/json?color=blue&label=version&query=%24.version&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+
+## Project Overview
+You can easily manage your tasks by adding and deleting tasks to separate lists for better manage.
+You can mark tasks as completed. You can easily switch between the to do list view, and the view of all created lists.
+
+## Technologies, frameworks and libraries used in app
+[![React Release](https://img.shields.io/badge/node-12.18.3-blue)]()
+[![React Release](https://img.shields.io/badge/npm-6.14.5-blue)]()
+[![React Release](https://img.shields.io/badge/dynamic/json?color=blue&label=react&query=%24.dependencies.react&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+[![Uuid Release](https://img.shields.io/badge/dynamic/json?color=blue&label=uuid&query=%24.dependencies.uuid&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+[![Lodash Release](https://img.shields.io/badge/dynamic/json?color=blue&label=lodash&query=%24.dependencies.lodash&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+[![ESLint Release](https://img.shields.io/badge/dynamic/json?color=blue&label=eslint&query=%24.devDependencies.eslint&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+[![Node Sass Release](https://img.shields.io/badge/dynamic/json?color=blue&label=node-sass&query=%24.devDependencies['node-sass']&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+[![Husky Release](https://img.shields.io/badge/dynamic/json?color=blue&label=husky&query=%24.devDependencies.husky&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+[![React Router Release](https://img.shields.io/badge/dynamic/json?color=blue&label=react-router-dom&query=%24.dependencies['react-router-dom']&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+[![GitHub Pages Release](https://img.shields.io/badge/dynamic/json?color=blue&label=gh-pages&query=%24.dependencies['gh-pages']&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+[![React Tooltip Release](https://img.shields.io/badge/dynamic/json?color=blue&label=react-tooltip&query=%24.dependencies['react-tooltip']&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+[![Classnames Release](https://img.shields.io/badge/dynamic/json?color=blue&label=classnames&query=%24.dependencies.classnames&url=https%3A%2F%2Fraw.githubusercontent.com%2FLZygmunt%2Ftodolist%2Fmaster%2Fpackage.json)]()
+
+
+## Screenshots
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/LZygmunt/todolist/master/docs/pictures/app.gif" alt="ToDo List App Gif">
+</p>
+
+## Installation
+
+To install this project you have to clone it with SSH/HTTPS. After cloning in the root directory of the project,
+run `npm install` to install dependencies and now you can use one of [available scripts](https://github.com/LZygmunt/todolist#available-scripts).
 
 ## Available Scripts
-
-In the project directory, you can run:
 
 ### `npm start`
 
@@ -37,32 +65,6 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Credits
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br>
+Special thanks for Bob Ziroll and his [React course](https://www.youtube.com/watch?v=DLX62G4lc44). This course show me how to build ToDo app and was inspiration to create more complex ToDo app.

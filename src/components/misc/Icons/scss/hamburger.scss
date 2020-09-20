@@ -1,0 +1,9 @@
+@import "../../../../assets/scss/variables";
+
+.hamburger {
+  margin-right: 10px;
+
+  rect {
+    fill: map_get($backgroundsColors, hamburger);
+  }
+}

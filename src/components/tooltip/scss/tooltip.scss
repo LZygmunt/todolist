@@ -1,0 +1,6 @@
+@import '../../../assets/scss/variables';
+
+.tooltip {
+  max-width: map-get($quantities, menuItemMaxWidth) - 20;
+  text-align: center;
+}

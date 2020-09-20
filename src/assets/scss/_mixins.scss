@@ -1,0 +1,13 @@
+@mixin textEllipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin menuShadow($offsetX) {
+  box-shadow: $offsetX 0 whitesmoke;
+}
+
+@mixin sideBorder($side) {
+  border-#{$side}: .1em solid #cecece;
+}
