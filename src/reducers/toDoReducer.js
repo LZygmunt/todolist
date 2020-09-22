@@ -22,26 +22,6 @@ const {
 
 const getListInfo = ( state, listID ) => state[ listID ];
 
-/* const getNextAndPrev = ( obj, id ) => {
-     let next, prev;
-
-     const keys = _filter( _keys( obj ), ( el ) => !BANNED_NAMES.includes( el ));
-     const found = _findIndex( keys, ( el ) => el === id );
-
-     const curr = id;
-
-     prev = keys[ found - 1 ];
-     next = keys[ found + 1 ];
-     if ( found <= 0 ) { prev = keys[ keys.length - 1 ]; }
-     if ( found === keys.length - 1 || found === -1 ) { [ next ] = keys; }
-
-     return {
-       next,
-       prev,
-       curr,
-     };
-   }; */
-
 const getNextAndPrev = ( state, listID ) => {
   const keys = _filter( _keys( state ), ( key ) => !BANNED_NAMES.includes( key ));
 
@@ -65,9 +45,6 @@ const getNextAndPrev = ( state, listID ) => {
     default: {
       const found = _findIndex( keys, ( key ) => key === listID );
 
-      console.log(
-        'loig', found, keys[ found - 1 ], keys[ found + 1 ],
-      );
       if ( found <= 0 ) {
         return {
           curr: getListInfo( state, listID ),

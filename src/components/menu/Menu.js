@@ -25,6 +25,8 @@ const {
   menu: { names: menuNames, texts: menuTexts },
   actions: { SET_NAV, LOAD_DEFAULT },
   globalIds: { TOOLTIP },
+  baseUrl,
+  listUrl,
 } = constants;
 
 const isSame = ( firstList, secondList ) => firstList?.id === secondList?.id;
@@ -40,7 +42,6 @@ const Menu = () => {
   });
 
   useEffect(() => {
-    console.log( toDos?.next && toDos?.prev );
     if ( toDos?.next && toDos?.prev ) {
       setNav({
         next: toDos.next,
@@ -66,7 +67,7 @@ const Menu = () => {
     switch ( name ) {
       case menuNames.ADD: {
         id = uuid();
-        history.push( `/list/${ id }`, { isNew: true });
+        history.push( `${ listUrl }/${ id }`, { isNew: true });
         dispatch({
           type: SET_NAV,
           payload: { listID: id },
@@ -75,7 +76,7 @@ const Menu = () => {
       }
 
       case menuNames.NEXT: {
-        history.push( `/list/${ nav.next.id }` );
+        history.push( `${ listUrl }/${ nav.next.id }` );
         dispatch({
           type: SET_NAV,
           payload: { listID: nav.next.id },
@@ -84,7 +85,7 @@ const Menu = () => {
       }
 
       case menuNames.PREV: {
-        history.push( `/list/${ nav.prev.id }` );
+        history.push( `${ listUrl }/${ nav.prev.id }` );
         dispatch({
           type: SET_NAV,
           payload: { listID: nav.prev.id },
@@ -93,7 +94,7 @@ const Menu = () => {
       }
 
       case menuNames.LISTS: {
-        history.push( '/' );
+        history.push( baseUrl );
         dispatch({
           type: SET_NAV,
           payload: {},
@@ -130,7 +131,7 @@ const Menu = () => {
         >
           <PlusIcon />
         </MenuItem>
-        { pathname !== '/' && (
+        { pathname !== baseUrl && (
           <>
             <MenuItem
               text={ menuTexts.LISTS }
@@ -158,7 +159,7 @@ const Menu = () => {
             </MenuItem>
           </>
         ) }
-        { pathname === '/' && (
+        { pathname === baseUrl && (
           <MenuItem
             text={ menuTexts.LOAD_DEFAULT }
             clickFn={ click }

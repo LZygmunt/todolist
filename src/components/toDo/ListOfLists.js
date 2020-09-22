@@ -16,6 +16,7 @@ const {
     SET_NAV,
   },
   bannedNames,
+  listUrl,
 } = constants;
 
 const removeNav = ( obj ) => {
@@ -31,7 +32,7 @@ const ListOfLists = () => {
   const history = useHistory();
 
   const clickFn = useCallback(( listID ) => {
-    history.push( `/list/${ listID }` );
+    history.push( `${ listUrl }/${ listID }` );
     dispatch({
       type: SET_NAV,
       payload: { listID },

@@ -11,6 +11,7 @@ const {
     ADD_TODO,
     CHANGE_LIST_NAME_EXECUTE,
   },
+  listUrl,
 } = constants;
 
 const AddToDo = ({
@@ -42,7 +43,7 @@ const AddToDo = ({
         },
       });
 
-      history.push( `/list/${ listID }` );
+      history.push( `${ listUrl }/${ listID }` );
     } else {
       dispatch({
         type: ADD_TODO,
