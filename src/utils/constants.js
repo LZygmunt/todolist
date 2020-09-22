@@ -1,6 +1,8 @@
 import { menuItemFontSize, menuItemMaxWidth } from '../assets/scss/_variables.scss';
 
 export default{
+  baseUrl: process.env.REACT_APP_BASE_URL,
+  listUrl: `${ process.env.REACT_APP_BASE_URL }/list`,
   actions: {
     ADD_LIST: 'ADD_LIST',
     ADD_TODO: 'ADD_TODO',

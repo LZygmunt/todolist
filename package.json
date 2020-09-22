@@ -1,8 +1,8 @@
 {
-  "name": "todolist",
-  "version": "2.0.0",
-  "private": false,
   "homepage": "https://lzygmunt.github.io/todolist/",
+  "name": "todolist",
+  "version": "2.0.1",
+  "private": false,
   "description": "This app helps you manage your ToDos. App allow to collect ToDos in lists, add and remove ToDos, add and remove Lists, mark/unmark completed state of ToDo",
   "dependencies": {
     "classnames": "^2.2.6",
@@ -18,6 +18,8 @@
     "uuid": "^8.2.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

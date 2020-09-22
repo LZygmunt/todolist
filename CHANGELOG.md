@@ -1,3 +1,7 @@
+## 2.0.1 (September 22, 2020)
+- Fix wrong list name when first name list and add todo
+- Fix routes paths
+
 ## 2.0.0 (September 20, 2020)
 - You can now add ToDo to list
 - You can now remove ToDo from list

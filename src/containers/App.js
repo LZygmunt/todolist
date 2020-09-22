@@ -2,6 +2,7 @@ import React from 'react';
 import {
   BrowserRouter, Route, Switch,
 } from 'react-router-dom';
+import constants from 'utils/constants';
 
 import ListName from 'components/listName/ListName';
 import ToDoList from 'components/toDo/ToDoList';
@@ -11,13 +12,15 @@ import ToDoContextProvider from 'contexts/ToDoContext';
 
 import './app.scss';
 
+const { baseUrl, listUrl } = constants;
+
 const App = () => (
   <BrowserRouter>
     <ToDoContextProvider>
       <Menu />
       <Switch>
-        <Route exact path="/" component={ ListOfLists } />
-        <Route exact path="/list/:id" component={ ToDoList } />
+        <Route exact path={ baseUrl } component={ ListOfLists } />
+        <Route exact path={ `${ listUrl }/:id` } component={ ToDoList } />
       </Switch>
       <ListName />
     </ToDoContextProvider>

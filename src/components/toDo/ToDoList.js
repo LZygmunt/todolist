@@ -63,6 +63,7 @@ const ToDoList = () => {
     >
       <AddToDo
         listID={ id }
+        name={ toDos[ id ]?.text }
         dispatch={ dispatch }
         isNew={ state?.isNew }
         changeNameActive={ toDos.changeNameActive }
