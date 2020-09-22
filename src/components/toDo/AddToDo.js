@@ -16,6 +16,7 @@ const {
 
 const AddToDo = ({
   listID,
+  name,
   // handleKey,
   dispatch,
   isNew,
@@ -32,7 +33,7 @@ const AddToDo = ({
         type: ADD_LIST,
         payload: {
           listID,
-          text: 'list',
+          text: name,
           toDoList: {
             [ id ]: {
               completed: false,
@@ -122,6 +123,7 @@ const AddToDo = ({
 AddToDo.propTypes = {
   dispatch: PropTypes.func.isRequired,
   listID: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   // handleKey: PropTypes.func,
   changeNameActive: PropTypes.bool,
   isNew: PropTypes.bool,
